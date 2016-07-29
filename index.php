@@ -43,32 +43,40 @@ and open the template in the editor.
             }
 
             protected function chroniona() {
-                echo '<br />dziedziczona';
+                echo '<br />chroniona';
             }
 
         }
-
+        class Observer {
+            public $_name;
+            
+            public function __construct($name) {
+                $this->_name = $name;
+            }
+        }
+        
         class testowa extends BaseObservable {
 
-//            private $_observer;
-//            
-//            function __construct(Observer $observer) {
-//                $this->_observer = $observer;
-//            }
+            private $_observer;
+            
+            function __construct(Observer $observer) {
+                $this->_observer = $observer;
+            }
 
             public function test() {
                 echo '<br /> zwykła klasa ';
                 $this->notifyAll();
                 $this->chroniona();
+                echo "<br /><br /><br /> obiekt Observer" . var_dump($this->_observer) . '<br /><br />'; 
                 //parent::notifyAll();
                 //$this->add($this->_observer);
             }
 
         }
-
-        $testy = new testowa();
+        
+        $testy = new testowa(new Observer('Piotr Kaczorowski'));
         $testy->test();
-        //$testy->notifyAll();
+        $testy->notifyAll();
         ?>
     </body>
 </html>
