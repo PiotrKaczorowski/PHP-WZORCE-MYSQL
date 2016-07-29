@@ -28,69 +28,74 @@ and open the template in the editor.
 
             private $_observers = array();
 
-            public function add(Observer $observer) {               
-                foreach ($observer as $key => $val) {
-                    $this->_observers[] = $val;
-                }              
+            public function add(Observer $observer) {
+                $this->_observers[] = $observer;
             }
 
             public function remove(Observer $observer) {
                 foreach ($this->_observers as $key => $val) {
-                    unset($this->_observers[$key]);
+                    if($val == $observer) {
+                        unset($this->_observers[$key]);
+                    }
                 }
-            }
+            }   
             
-            /**
-             * 
-             * @return type array obj
-             */
             protected function getObservers() {
                 return $this->_observers;
             }
-            
-            public function notifyAll() {
-                echo '<br />z interfejsu';
-            }
-
-            protected function chroniona() {
-                echo '<br />chroniona';
-            }
 
         }
+
         class Observer {
+
             public $_name;
-            
+
             public function __construct($name) {
                 $this->_name = $name;
             }
+
         }
         
-        class testowa extends BaseObservable {
-
-            private $_observer;
+        class ExtendedObs extends BaseObservable {
             
-//            function __construct(Observer $observer) {
-//                $this->_observer = $observer;
+            public function notifyAll() {
+                echo '<br />klasa Rozszerzająca, która rozszerza funkcje Abstrakcji (implementacja wynika z interfejsu)';
+                echo '<br />' . PHP_EOL;
+                print_r($this->getObservers()) . PHP_EOL;
+            }
+         
+        }
+
+//        class Traditional  {
+//  
+//            
+//            public function display() {
+//                echo '<br /> zwykła klasa ';
+////                $this->notifyAll();
+////                $this->chroniona();
+//////                echo "<br /> obiekt Observer" . print_r(get_class_methods($this->_observer));
+////                parent::notifyAll();
+////                $this->add($this->_observer);
+//               
 //            }
 
-            public function test() {
-//                echo '<br /> zwykła klasa ';
-//                $this->notifyAll();
-//                $this->chroniona();
-////                echo "<br /> obiekt Observer" . print_r(get_class_methods($this->_observer));
-//                parent::notifyAll();
-//                $this->add($this->_observer);
-                print_r($this->getObservers());
-            }
+//        }
 
-        }
+        $testy = new ExtendedObs();
         
-        $testy = new testowa();
-        $testy->add(new Observer('Piotr Kaczorowski'));
-        $testy->add(new Observer('Jan Kaczorowski'));
+        $obj1 =  new Observer('Piotr Kaczorowski');        
+        $obj2 = new Observer('Jan Kaczorowski');
+        $obj3 = new Observer('Albert Einstein');
         
-        $testy->test();
-//        $testy->notifyAll();
+        $testy->add($obj1);
+        $testy->add($obj2);
+        $testy->add($obj3);
+        
+        $testy->remove($obj2);
+        
+        $testy->notifyAll();
+        
+
         ?>
     </body>
 </html>
