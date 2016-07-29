@@ -42,8 +42,8 @@ and open the template in the editor.
                 echo '<br />z interfejsu';
             }
 
-            protected function pozainterfejsem() {
-                echo '<br />pozainterfejsem';
+            protected function chroniona() {
+                echo '<br />dziedziczona';
             }
 
         }
@@ -59,7 +59,7 @@ and open the template in the editor.
             public function test() {
                 echo '<br /> zwykła klasa ';
                 $this->notifyAll();
-                $this->pozainterfejsem();
+                $this->chroniona();
                 //parent::notifyAll();
                 //$this->add($this->_observer);
             }
