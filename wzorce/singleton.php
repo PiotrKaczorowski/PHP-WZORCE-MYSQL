@@ -1,5 +1,8 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,21 +14,42 @@
  *
  * @author 2358
  */
-class Singleton extends PDO{
+trait Singleton { //extends PDO 
     
-    private static $instance;
-    
-    private function __construct() {
-        parent::__construct(APP_DB_DNS, APP_DB_USER, APP_DB_PASS, APP_DB);
-    }
-    
-    public static function getConnection() {
-                
-        if(!(self::$instance instanceof Singleton)) {
-            self::$instance = new Singleton();
-        }
+    private static $_instance = null;
+
+    public static function getInstance() {
+
+        $class = __CLASS__;
         
-        return self::$instance;
+        if(!(self::$_instance instanceof $class)) {
+            self::$_instance = new $class();
+        }
+        return self::$_instance;
     }
-    
+
 }
+
+
+class DBWrite extends PDO {
+//    private static $_instance = null;
+//
+//    public static function getInstance() {
+//
+//        $class = __CLASS__;
+//        
+//        if(!(self::$_instance instanceof $class)) {
+//            self::$_instance = new $class();
+//        }
+//        return self::$_instance;
+//    }
+   
+    use Singleton;
+  
+    public function __construct() {
+        parent::__construct('mysql:dbname=shellholiday;host=127.0.0.1','root','');
+    }
+}
+
+$obj = DBWrite::getInstance();
+var_dump($obj);
