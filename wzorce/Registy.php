@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 /**
  * Description of rejest
  *
- * @author 2358
+ * @author Piotr Kaczorowski ctechnology.pl
  */
 
 interface RegistyInterface {
