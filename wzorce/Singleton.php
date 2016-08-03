@@ -30,7 +30,7 @@ class DBWrite extends PDO {
     use Singleton;
   
     public function __construct() {
-        parent::__construct(APP_DB_WRITE_DNS, APP_DB_USER, APP_DB_PASSWORD); //'mysql:dbname=shellholiday;host=127.0.0.1','root',''
+        parent::__construct(APP_DB_WRITE_DNS, APP_DB_USER, APP_DB_PASSWORD); 
     }
 }
 
