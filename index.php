@@ -10,7 +10,7 @@ include_once 'wzorce/Registy.php';
 // użycie zewnętrzne
 
 $write = new DBWrite;
-Registy::set($write);
+var_dump(Registy::set($write));die();
 
 $read = new DBRead;
 Registy::set($read);

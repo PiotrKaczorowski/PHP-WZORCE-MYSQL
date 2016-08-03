@@ -25,11 +25,11 @@ class Registy implements RegistyInterface{
         $name = strtolower($name);
         $result = null;
         
-        if(isset(self::$_store[$name])) {
-            $result = self::$_store[$name];
+        if(!isset(self::$_store[$name])) {
+            self::$_store[$name] = $obj;
         }
         
-        self::$_store[$name] = $obj;
+        $result = self::$_store[$name];
         return $result;
     }
     public static function get($name){
