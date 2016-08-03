@@ -63,7 +63,7 @@ $writeConn = DBWriteConnection::getInstance();
 $readConn  = DBReadConnection::getInstance();
 $readInnyCelDlaObjConn = DBReadConnection::getInstance('InnyCelDlaObj');
 
-echo "<h2>Wynik z pobieranych obiektów - wnętrzne wiązanie:</h2>";
+echo "<h2>Wynik z pobieranych obiektów - wewnętrzne wiązanie:</h2>";
 echo '<pre>';
 echo "<br />" . get_class($writeConn);
 echo "<br />" . get_class($readConn);
