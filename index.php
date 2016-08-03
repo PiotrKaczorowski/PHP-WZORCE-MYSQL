@@ -14,10 +14,10 @@ Registry::set($write);
 //
 $read = new DBRead;
 Registry::set($read);
-//
-//    // dostęp do zarejestrowanych obj z dowolnego miejsca w kodzie 
-//    // gdzie dostępna jest klasa Registry
-//
+
+    // dostęp do zarejestrowanych obj z dowolnego miejsca w kodzie 
+    // gdzie dostępna jest klasa Registry
+
 $read = Registry::get('dbread');
 $write = Registry::get('dbwrite');
 //
@@ -29,18 +29,18 @@ echo "<br />" . get_class($write);
 
 abstract class DBConnection extends PDO {
     static public function getInstance($name = null) {
-        
+      
         $class = get_called_class();
-        
-        $name = (!is_null($name))? : $class;
-        
+      
+        $name = (!is_null($name)) ? $name : $class;
+
         if(!Registry::contains($name)) {
             $instance = new $class();
-            Registry::set($instance, $name);
-             
+            $return = Registry::set($instance, $name);
+        }else{
+            $return = Registry::get($name);
         }
-        
-        return Registry::get($name);
+        return $return;
     }
 }
 
@@ -56,11 +56,11 @@ class DBReadConnection extends DBConnection {
     }
 }
 
-//$writeConn = DBWriteConnection::getInstance();
-//$readConn  = DBReadConnection::getInstance();
+$writeConn = DBWriteConnection::getInstance();
+$readConn  = DBReadConnection::getInstance();
 $readInnyCelDlaObjConn = DBReadConnection::getInstance('InnyCelDlaObj');
 
 echo "<h2>Wynik z pobieranych obiektów - wnętrzne wiązanie:</h2>";
-//echo "<br />" . var_dump($writeConn) ;
-//echo "<br />" . var_dump($readConn);
+echo "<br />" . var_dump($writeConn) ;
+echo "<br />" . var_dump($readConn);
 echo "<br />" . var_dump($readInnyCelDlaObjConn);

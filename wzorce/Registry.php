@@ -36,7 +36,7 @@ class Registry implements RegistryInterface{
     static public function get($name){
        
         if(!self::contains($name)) {
-            throw new Exception("Nie ma takiego w rejsetrze.");
+            throw new Exception("Nie ma takiego w rejestrze.");
         }
         
         return self::$_store[$name];
