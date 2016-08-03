@@ -1,7 +1,7 @@
 <?php
 
-include_once 'Singleton.php';
-include_once 'Registry.php';
+include_once 'wzorce/Singleton.php';
+include_once 'wzorce/Registry.php';
 
 
 // użycie
