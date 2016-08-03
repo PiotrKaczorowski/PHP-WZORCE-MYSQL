@@ -10,17 +10,17 @@ error_reporting(E_ALL);
  */
 
 interface RegistyInterface {
-    public static function get($name);
-    public static function set($obj, $name);
-    public static function contains($name);
-    public static function remove($name);
+    static public function get($name);
+    static public function set($obj, $name);
+    static public function contains($name);
+    static public function remove($name);
 }
 
-class Registy implements RegistyInterface{
+class Registy { //implements RegistyInterface{
     
-    private static $_store = array();
+    static private $_store = array();
 
-    public static function set($obj, $name = null){
+    static public function set($obj, $name = null){
         $name = (!is_null($name)) ? : get_class($obj);
         $name = strtolower($name);
         $result = null;
@@ -30,10 +30,11 @@ class Registy implements RegistyInterface{
         }
         
         $result = self::$_store[$name];
+    
         return $result;
     }
-    public static function get($name){
-        
+    static public function get($name){
+       
         if(!self::contains($name)) {
             throw new Exception("Nie ma takiego w rejsetrze.");
         }
@@ -45,14 +46,16 @@ class Registy implements RegistyInterface{
      * @param type $name
      * @return boolean
      */
-    public static function contains($name){
-        if(isset(self::$_store[$name])) {
-            return true;
-        }else{
+    static public function contains($name){
+        
+        if(!isset(self::$_store[$name])) {
             return false;
         }
+        
+        return true;
+        
     }
-    public static function remove($name){
+    static public function remove($name){
         if(self::contains($name)){
             unset(self::$_store[$name]);
         }
