@@ -28,6 +28,7 @@ echo "<br />" . get_class($write);
 // użycie wewnętrzne 
 
 abstract class DBConnection extends PDO {
+    
     static public function getInstance($name = null) {
       
         $class = get_called_class();
@@ -46,20 +47,13 @@ abstract class DBConnection extends PDO {
 
 class DBWriteConnection extends DBConnection{
     
-    public function test() {
-        return 'DB Write Conn';
-    }
-    
     public function __construct() {
         parent::__construct(APP_DB_WRITE_DNS, APP_DB_WRITE_USER, APP_DB_WRITE_PASSWORD);
     }
 }
 
 class DBReadConnection extends DBConnection {
-    
-    public function test() {
-        return 'DB Read Conn';
-    }
+
     public function __construct() {
         parent::__construct(APP_DB_READ_DNS, APP_DB_READ_USER, APP_DB_READ_PASSWORD);
     }
