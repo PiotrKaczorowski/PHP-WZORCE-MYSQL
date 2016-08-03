@@ -10,10 +10,10 @@ error_reporting(E_ALL);
  */
 
 interface RegistyInterface {
-    public static function get();
-    public static function set();
-    public static function contains();
-    public static function remove();
+    public static function get($name);
+    public static function set($obj, $name);
+    public static function contains($name);
+    public static function remove($name);
 }
 
 class Registy implements RegistyInterface{
