@@ -10,7 +10,7 @@ include_once 'wzorce/Registy.php';
 // użycie zewnętrzne
 
 $write = new DBWrite;
-var_dump(Registy::set($write));die();
+Registy::set($write);
 
 $read = new DBRead;
 Registy::set($read);
@@ -18,8 +18,8 @@ Registy::set($read);
     // dostęp do zarejestrowanych obj z dowolnego miejsca w kodzie 
     // gdzie dostępna jest klasa Registry
 
-$read = Registy::get('DBRead');
-$write = Registy::get('DBWrite');
+$read = Registy::get('dbread');
+$write = Registy::get('dbwrite');
 
 // użycie wewnętrzne 
 
