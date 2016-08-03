@@ -39,16 +39,16 @@ abstract class DBConnection extends PDO {
 
 class DBWriteConnection extends DBConnection{
     public function __construct() {
-        parent::__construct(APP_DNS, APP_USERNAME, APP_PASSWORD);
+        parent::__construct(APP_DB_WRITE_DNS, APP_DB_USER, APP_DB_PASSWORD);
     }
 }
 
 class DBReadConnection extends DBConnection {
     public function __construct() {
-        parent::__construct(APP_DNS, APP_USERNAME, APP_PASSWORD);
+        parent::__construct(APP_DB_READ_DNS, APP_DB_USER, APP_DB_PASSWORD);
     }
 }
 
 $writeConn = DBWriteConnection::getInstance();
 $readConn  = DBReadConnection::getInstance();
-$readOtherInstanceConn = DBReadConnection::getInstance('OtherInstance');
+$readInnyCelDlaObjConn = DBReadConnection::getInstance('InnyCelDlaObj');
