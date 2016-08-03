@@ -16,7 +16,7 @@ interface RegistryInterface {
     static public function remove($name);
 }
 
-class Registry { //implements RegistryInterface{
+class Registry implements RegistryInterface{
     
     static private $_store = array();
 

@@ -9,21 +9,21 @@ include_once 'wzorce/Registry.php';
 
 // użycie zewnętrzne
 
-//$write = new DBWrite;
-//Registry::set($write);
+$write = new DBWrite;
+Registry::set($write);
 //
-//$read = new DBRead;
-//Registry::set($read);
+$read = new DBRead;
+Registry::set($read);
 //
 //    // dostęp do zarejestrowanych obj z dowolnego miejsca w kodzie 
 //    // gdzie dostępna jest klasa Registry
 //
-//$read = Registry::get('dbread');
-//$write = Registry::get('dbwrite');
+$read = Registry::get('dbread');
+$write = Registry::get('dbwrite');
 //
-//echo "<h2>Wynik z pobieranych obiektów - zewnętrzne wiązanie:</h2>";
-//echo "<br />" . get_class($read) ;
-//echo "<br />" . get_class($write);
+echo "<h2>Wynik z pobieranych obiektów - zewnętrzne wiązanie:</h2>";
+echo "<br />" . get_class($read) ;
+echo "<br />" . get_class($write);
 
 // użycie wewnętrzne 
 
@@ -56,11 +56,11 @@ class DBReadConnection extends DBConnection {
     }
 }
 
-$writeConn = DBWriteConnection::getInstance();
+//$writeConn = DBWriteConnection::getInstance();
 //$readConn  = DBReadConnection::getInstance();
-//$readInnyCelDlaObjConn = DBReadConnection::getInstance('InnyCelDlaObj');
+$readInnyCelDlaObjConn = DBReadConnection::getInstance('InnyCelDlaObj');
 
 echo "<h2>Wynik z pobieranych obiektów - wnętrzne wiązanie:</h2>";
 //echo "<br />" . var_dump($writeConn) ;
 //echo "<br />" . var_dump($readConn);
-//echo "<br />" . var_dump($readInnyCelDlaObjConn);
+echo "<br />" . var_dump($readInnyCelDlaObjConn);
