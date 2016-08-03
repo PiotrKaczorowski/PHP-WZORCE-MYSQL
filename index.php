@@ -45,14 +45,23 @@ abstract class DBConnection extends PDO {
 }
 
 class DBWriteConnection extends DBConnection{
+    
+    public function test() {
+        return 'DB Write Conn';
+    }
+    
     public function __construct() {
-        parent::__construct(APP_DB_WRITE_DNS, APP_DB_USER, APP_DB_PASSWORD);
+        parent::__construct(APP_DB_WRITE_DNS, APP_DB_WRITE_USER, APP_DB_WRITE_PASSWORD);
     }
 }
 
 class DBReadConnection extends DBConnection {
+    
+    public function test() {
+        return 'DB Read Conn';
+    }
     public function __construct() {
-        parent::__construct(APP_DB_READ_DNS, APP_DB_USER, APP_DB_PASSWORD);
+        parent::__construct(APP_DB_READ_DNS, APP_DB_READ_USER, APP_DB_READ_PASSWORD);
     }
 }
 
@@ -61,6 +70,7 @@ $readConn  = DBReadConnection::getInstance();
 $readInnyCelDlaObjConn = DBReadConnection::getInstance('InnyCelDlaObj');
 
 echo "<h2>Wynik z pobieranych obiektów - wnętrzne wiązanie:</h2>";
-echo "<br />" . var_dump($writeConn) ;
-echo "<br />" . var_dump($readConn);
-echo "<br />" . var_dump($readInnyCelDlaObjConn);
+echo '<pre>';
+echo "<br />" . $writeConn->test();
+echo "<br />" . $readConn->test();
+echo "<br />" . get_class($readInnyCelDlaObjConn);
