@@ -66,24 +66,10 @@ and open the template in the editor.
          
         }
 
-//        class Traditional  {
-//  
-//            
-//            public function display() {
-//                echo '<br /> zwykła klasa ';
-////                $this->notifyAll();
-////                $this->chroniona();
-//////                echo "<br /> obiekt Observer" . print_r(get_class_methods($this->_observer));
-////                parent::notifyAll();
-////                $this->add($this->_observer);
-//               
-//            }
-
-//        }
 
         $testy = new ExtendedObs();
         
-        $obj1 =  new Observer('Piotr Kaczorowski');        
+        $obj1 = new Observer('Piotr Kaczorowski');        
         $obj2 = new Observer('Jan Kaczorowski');
         $obj3 = new Observer('Albert Einstein');
         
