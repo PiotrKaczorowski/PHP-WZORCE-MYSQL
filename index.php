@@ -4,7 +4,7 @@
  */
 include_once 'vars/config.php';
 include_once 'wzorce/Singleton.php';
-include_once 'wzorce/Registry.php';
+include_once 'wzorce/Registy.php';
 
 
 // użycie zewnętrzne
