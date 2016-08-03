@@ -71,6 +71,6 @@ $readInnyCelDlaObjConn = DBReadConnection::getInstance('InnyCelDlaObj');
 
 echo "<h2>Wynik z pobieranych obiektów - wnętrzne wiązanie:</h2>";
 echo '<pre>';
-echo "<br />" . $writeConn->test();
-echo "<br />" . $readConn->test();
+echo "<br />" . get_class($writeConn);
+echo "<br />" . get_class($readConn);
 echo "<br />" . get_class($readInnyCelDlaObjConn);
