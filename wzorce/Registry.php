@@ -9,14 +9,14 @@ error_reporting(E_ALL);
  * @author Piotr Kaczorowski ctechnology.pl
  */
 
-interface RegistyInterface {
+interface RegistryInterface {
     static public function get($name);
     static public function set($obj, $name);
     static public function contains($name);
     static public function remove($name);
 }
 
-class Registy { //implements RegistyInterface{
+class Registry { //implements RegistryInterface{
     
     static private $_store = array();
 
