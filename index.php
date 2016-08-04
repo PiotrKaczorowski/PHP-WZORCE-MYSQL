@@ -69,11 +69,3 @@ echo '<pre>';
 echo "<br />" . get_class($writeConn);
 echo "<br />" . get_class($readConn);
 echo "<br />" . get_class($readInnyCelDlaObjConn);
-
-
-// wykorzystanie wzrorca Strategy
-$context = new Context();
-$context->setStrategy(new ConcretStrategy1);
-$context->getStrategy();
-$context->setStrategy(new ConcretStrategy2);
-$context->getStrategy();
