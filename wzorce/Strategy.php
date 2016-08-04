@@ -16,13 +16,13 @@ interface AbstractStrategy {
     public function task();
 }
 
-class ConcretStrategy1 extends AbstractStrategy {
+class ConcretStrategy1 implements AbstractStrategy {
     public function task() {
         echo get_class();
     }
 }
 
-class ConcretStrategy2 extends AbstractStrategy {
+class ConcretStrategy2 implements AbstractStrategy {
     public function task() {
         echo get_class();
     }
@@ -39,3 +39,10 @@ class Context {
         return $this->_strategy;
     }
 }
+
+
+$context = new Context();
+$context->setStrategy(new ConcretStrategy1);
+$context->getStrategy()->task();
+$context->setStrategy(new ConcretStrategy2);
+$context->getStrategy()->task();
