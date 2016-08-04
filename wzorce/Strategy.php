@@ -12,37 +12,48 @@
  * @author 2358
  */
 
-interface AbstractStrategy {
-    public function task();
+interface Tax {
+    public function count($price);
 }
 
-class ConcretStrategy1 implements AbstractStrategy {
-    public function task() {
-        echo get_class();
+class TaxPL implements Tax {
+    public function count($price) {
+        return 0.23 * $price;
     }
 }
 
-class ConcretStrategy2 implements AbstractStrategy {
-    public function task() {
-        echo get_class();
+class TaxGermany implements Tax {
+    public function count($price){
+        return 0.20 * $price;
     }
 }
 
 class Context {
     private $_strategy;
     
-    public function setStrategy(AbstractStrategy $obj) {
-        $this->_strategy = $obj;
+    public function setCountry($countrySymbol) {
+        switch($countrySymbol) {
+            case 'PL':
+                $this->_strategy = new TaxPL();
+            case 'GER':
+                $this->_strategy = new TaxGermany();
+        }
+        
+        //$this->_strategy = $obj;
     }
     
-    public function getStrategy() {
+    public function getTax() {
         return $this->_strategy;
     }
 }
 
 
 $context = new Context();
-$context->setStrategy(new ConcretStrategy1);
-$context->getStrategy()->task();
-$context->setStrategy(new ConcretStrategy2);
-$context->getStrategy()->task();
+$context->setCountry('PL');
+echo $context->getTax()->count(100);
+
+
+//$context->setStrategy(new ConcretStrategy1);
+//$context->getStrategy()->task();
+//$context->setStrategy(new ConcretStrategy2);
+//$context->getStrategy()->task();
