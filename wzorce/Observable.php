@@ -64,9 +64,6 @@ and open the template in the editor.
             }
          
         }
-
-
-       
         
         $obj1 = new Observer('Piotr Kaczorowski');        
         $obj2 = new Observer('Jan Kaczorowski');
