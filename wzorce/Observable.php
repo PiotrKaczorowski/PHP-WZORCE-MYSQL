@@ -56,32 +56,29 @@ and open the template in the editor.
 
         }
         
-        class ExtendedObs extends BaseObservable {
+        class ContextObs extends BaseObservable {
             
             public function notifyAll() {
-                echo '<br />klasa Rozszerzająca, która rozszerza funkcje Abstrakcji (implementacja wynika z interfejsu)';
-                echo '<br />' . PHP_EOL;
+              
                 print_r($this->getObservers()) . PHP_EOL;
             }
          
         }
 
 
-        $testy = new ExtendedObs();
+       
         
         $obj1 = new Observer('Piotr Kaczorowski');        
         $obj2 = new Observer('Jan Kaczorowski');
         $obj3 = new Observer('Albert Einstein');
         
+        $testy = new ContextObs();
         $testy->add($obj1);
         $testy->add($obj2);
         $testy->add($obj3);
-        
         $testy->remove($obj2);
-        
         $testy->notifyAll();
         
-
         ?>
     </body>
 </html>
