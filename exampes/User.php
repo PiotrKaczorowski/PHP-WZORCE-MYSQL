@@ -11,11 +11,17 @@ abstract class User {
     protected $passw;
     
     public function login() {
-        return 'zaloguj';
+        if($this->passw && ($this->login || $this->email)) {
+            // compare date to database
+            return 'zaloguje';
+        }
+        return 'nie zaloguje';
     }
     public function logout() {
         return 'wyloguj';
     }
+    
+    
 }
 
 class Customer extends User{
