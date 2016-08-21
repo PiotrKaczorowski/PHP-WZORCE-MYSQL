@@ -13,18 +13,30 @@
  */
 class Test {
     
-    private $_foo ;
-    private $_bar ;
+    public $foo = '' ;
+    public $bar = '' ;
 
-    public function __construct() {
-        $this->_foo = 'foo';
-        $this->_bar = 'bar';
-    }
+    public function __construct() {  }
     
-    public function ecboFoo() {
-        echo $this->_foo; 
+    public function echoFoo() {
+        echo $this->foo."\n"; 
     }
     public function echoBar() {
-        echo $this->_bar; 
+        echo $this->bar."\n"; 
     }
 }
+
+
+$obj = new Test();
+$reflector = new ReflectionClass('Test');
+$i =1;
+$properties = $reflector->getProperties();
+
+foreach ($properties as $property) {
+    $obj->{$property->getName()} = $i;
+    $obj->{'echo'.ucfirst($property->getName())}();
+    
+    $i++;
+}
+echo '<pre>';
+print_r($properties);
