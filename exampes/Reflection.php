@@ -16,7 +16,7 @@ class Test {
     private $foo = '';
     private $bar = '';
 
-    public __construct() {
+    public function __construct() {
         
     }
     
