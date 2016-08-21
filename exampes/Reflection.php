@@ -22,9 +22,9 @@ class Test {
     }
     
     public function ecboFoo() {
-        
+        echo $this->_bar; 
     }
     public function echoBar() {
-        
+        echo $this->_bar; 
     }
 }
