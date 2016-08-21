@@ -5,6 +5,20 @@
  *
  * @author Piotr Kaczorowski
  */
+
+/**
+ * Return tab in good tempate 
+ * @param type $val
+ */
+function printr($val) {
+        echo '<pre>';
+        print_r($val);
+        echo '</pre>';
+}
+
+/**
+ * class for testing reflection 
+ */
 class Test {
     
     public $foo = '' ;
@@ -12,25 +26,31 @@ class Test {
 
     public function __construct() {  }
     
-    public function echoFoo() {
+    public function displayFoo() {
         echo $this->foo."\n"; 
     }
-    public function echoBar() {
+    public function displayBar() {
         echo $this->bar."\n"; 
     }
+    
 }
 
+/*
+ * try example
+ */
 
 $obj = new Test();
 $reflector = new ReflectionClass('Test');
-$i =1;
+
+
 $properties = $reflector->getProperties();
+$i =1;
+
+printr($properties);
 
 foreach ($properties as $property) {
     $obj->{$property->getName()} = $i;
-    $obj->{'echo'.ucfirst($property->getName())}();
+    $obj->{'display'.ucfirst($property->getName())}();
     
     $i++;
 }
-echo '<pre>';
-print_r($properties);
