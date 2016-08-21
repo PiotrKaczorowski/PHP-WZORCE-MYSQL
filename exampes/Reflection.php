@@ -31,8 +31,7 @@ class Test {
     }
     public function displayBar() {
         echo $this->bar."\n"; 
-    }
-    
+    }   
 }
 
 /*
