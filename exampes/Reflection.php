@@ -13,11 +13,12 @@
  */
 class Test {
     
-    private $foo = '';
-    private $bar = '';
+    private $_foo ;
+    private $_bar ;
 
     public function __construct() {
-        
+        $this->_foo = 'foo';
+        $this->_bar = 'bar';
     }
     
     public function ecboFoo() {
