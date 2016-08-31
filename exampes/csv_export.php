@@ -1,3 +1,4 @@
+<?php
 abstract class Operations {
 
             private $_filePath;
@@ -77,3 +78,4 @@ abstract class Operations {
         $results = $test->displaySolutions();
         $test = null;
         echo "W BAZIE ISTNIEJE: {$results}";
+?>
